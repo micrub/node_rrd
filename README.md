@@ -1,16 +1,26 @@
 # Description
 
-node_rrd is a node.js (http://nodejs.org) native binding for RRDtool (http://oss.oetiker.ch/rrdtool/).
+`node_rrd` is a node.js (http://nodejs.org) native binding for [RRDtool](http://oss.oetiker.ch/rrdtool/).
 
 # Dependencies
 
 In order to compile the c++ sources, you need to have: 
   * node-gyp (npm install -g node-gyp)
+   * depends ob python3
+	* npm config
+	  * `npm config set python $(which python3)`
   * a compiler toolchain (gcc etc...)
   * the RRDtool library (http://oss.oetiker.ch/rrdtool/).
 
 For tests:
   * mocha (http://visionmedia.github.com/mocha/).
+
+## On Macos
+
+```
+$ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" 2> /dev/null
+$ brew install rrdtool
+```
 
 # Install
 
@@ -139,6 +149,14 @@ rrd.create(filename, 60, now(), ['DS:loadavg1:GAUGE:120:0:U', 'RRA:LAST:0.5:1:60
 This module is in early development stage which means the API is not frozen etc...
 At this point not all rrdtool commands are binded. I did the ones that where the most important to me.
 If you really need xport or an other command feel free to contact me (thierry dot passeron at gmail dot com).
+
+# Os deps
+
+## MacOS
+
+```
+brew install rrdtool librrd-dev
+```
 
 # Tests
 
